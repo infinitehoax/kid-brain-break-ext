@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "KidBrainBreak",
+  "version": "2.1.0",
+  "description": "Fun educational brain breaks every 30 minutes — spinning wheels, IPA, YouTube challenges & more!",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "alarms",
+    "storage",
+    "tabs",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "injected-ui/popup.html",
+        "injected-ui/popup.css",
+        "injected-ui/popup.js",
+        "injected-ui/components/*.js",
+        "injected-ui/components/question-types/*.js",
+        "injected-ui/core/*.js",
+        "assets/*",
+        "questions.json"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_title": "KidBrainBreak Settings",
+    "default_popup": "settings-popup.html"
+  }
+}

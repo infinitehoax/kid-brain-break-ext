@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KidBrainBreak Settings</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Fredoka+One&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    width: 300px;
+    background: #0d0d1a;
+    color: #f0f0ff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    padding: 0;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #7b61ff, #ff61b6);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-icon { font-size: 28px; }
+  .header-title { font-family: 'Fredoka One', cursive; font-size: 22px; color: white; }
+  .header-sub { font-size: 12px; color: rgba(255,255,255,0.8); }
+
+  .body { padding: 16px 20px; }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    background: #1c1c3a;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Fredoka One', cursive;
+    font-size: 24px;
+    color: #7b61ff;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: #8888aa;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .section-title {
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #8888aa;
+    margin: 16px 0 8px;
+  }
+
+  .setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .setting-label { font-weight: 700; font-size: 13px; }
+  .setting-sub { font-size: 11px; color: #8888aa; }
+
+  input[type="number"] {
+    width: 60px;
+    background: #1c1c3a;
+    border: 2px solid rgba(123,97,255,0.3);
+    border-radius: 8px;
+    color: #f0f0ff;
+    font-family: 'Fredoka One', cursive;
+    font-size: 16px;
+    text-align: center;
+    padding: 4px;
+    outline: none;
+  }
+
+  input[type="number"]:focus { border-color: #7b61ff; }
+
+  .btn-test {
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px;
+    background: linear-gradient(135deg, #7b61ff, #ff61b6);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-test:hover { transform: scale(1.03); filter: brightness(1.1); }
+
+  .version {
+    text-align: center;
+    color: #8888aa;
+    font-size: 11px;
+    margin-top: 14px;
+    padding-bottom: 4px;
+  }
+
+  .streak-badge {
+    background: rgba(255,228,86,0.15);
+    border: 1px solid rgba(255,228,86,0.3);
+    border-radius: 20px;
+    padding: 6px 14px;
+    color: #ffe456;
+    font-weight: 800;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <span class="header-icon">🧠</span>
+    <div>
+      <div class="header-title">BrainBreak!</div>
+      <div class="header-sub">Educational Screen Breaks</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="streak-badge" id="streak-display">🔥 Loading streak…</div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num" id="stat-today">0</div>
+        <div class="stat-label">Today</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-total">0</div>
+        <div class="stat-label">Total</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="stat-cat">—</div>
+        <div class="stat-label">Today's Cat</div>
+      </div>
+    </div>
+
+    <div class="section-title">⚙️ Settings</div>
+
+    <div class="setting-row">
+      <div>
+        <div class="setting-label">Break Interval</div>
+        <div class="setting-sub">Minutes between breaks</div>
+      </div>
+      <input type="number" id="interval-input" min="5" max="120" value="30">
+    </div>
+
+    <button class="btn-test" id="test-btn">🎯 Test Break Now</button>
+
+    <div class="version">KidBrainBreak v2.1.0 — by you ❤️</div>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>
