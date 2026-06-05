@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - '**'
+    tags:
+      - 'v*'
   pull_request:
     branches:
       - '**'
@@ -11,6 +13,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -33,3 +37,16 @@ jobs:
         with:
           name: extension-dist
           path: dist/
+
+      - name: Zip extension
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          cd dist
+          zip -r ../kid-brain-break-ext.zip .
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: kid-brain-break-ext.zip
+          generate_release_notes: true
